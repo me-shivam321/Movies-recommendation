@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Movie Genre</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Change from center to top alignment */
+            height: auto; /* Allow body height to grow with content */
+            min-height: 100vh; /* Ensure the page takes at least full viewport height */
+        }
+        .container {
+            text-align: center;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 80%; /* Adjust width for better display */
+            max-width: 900px; /* Set a max-width for large screens */
+            margin-top: 20px; /* Add some space at the top */
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 36px; /* Increase the font size of the heading */
+        }
+        .genre {
+            display: inline-block;
+            margin: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            width: 250px; /* Make sure each genre container has a fixed width */
+        }
+        .genre img {
+            width: 100%;
+            height: auto;
+            border-bottom: 2px solid #ddd;
+        }
+        .genre p {
+            background-color: #333;
+            color: #fff;
+            margin: 0;
+            padding: 10px;
+            font-size: 18px;
+            text-align: center;
+        }
+        .genre:hover {
+            transform: scale(1.05);
+        }
+        .recommendations {
+            margin-top: 30px;
+            display: none;
+            text-align: left;
+            font-size: 20px; /* Increase font size for recommendations */
+            color: #333;
+        }
+        .recommendations ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .recommendations li {
+            margin: 15px 0;
+        }
+        .recommendations a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .recommendations a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Choose Your Movie Genre</h1>
+    
+        <!-- Action Genre with Image -->
+        <div class="genre" onclick="showRecommendations('action')">
+            <img src="D:\collage work\MV5BMmU5NGJlMzAtMGNmOC00YjJjLTgyMzUtNjAyYmE4Njg5YWMyXkEyXkFqcGc@.jpg" alt="Action Movie" style="width: 200px; height: 280px;">
+            <p>Action</p>
+        </div>
+    
+        <!-- Adventure Genre with Image -->
+        <div class="genre" onclick="showRecommendations('adventure')">
+            <img src="D:\collage work\MV5BNDhlMzEyNzItMTA5Mi00YWRhLThlNTktYTQyMTA0MDIyNDEyXkEyXkFqcGc@.webp" alt="Adventure Movie" style="width: 200px; height: 280px;">
+            <p>Adventure</p>
+        </div>
+    
+        <!-- Emotional Genre with Image -->
+        <div class="genre" onclick="showRecommendations('emotional')">
+            <img src="D:\collage work\Spiderman 4k.jpeg" alt="Emotional Movie" style="width: 200px; height: 270px;">
+            <p>Emotional</p>
+        </div>
+    
+        <div class="recommendations" id="recommendations">
+            <h2>Recommended Movies:</h2>
+            <ul id="recommendation-list"></ul>
+        </div>
+    </div>
+
+    <script>
+        function showRecommendations(genre) {
+            const recommendations = {
+                action: [
+                    { title: "BHAVESH JOSHI", url: "https://youtu.be/EnVzfcG9IWY?feature=shared" },
+                    { title: "MARD KO DARD NAHI HOTA", url: "https://youtu.be/5QDb3qfZW-8?feature=shared" },
+                ],
+                adventure: [
+                    { title: "LOMAD", url: "https://youtu.be/EPsrIhCXfXQ?feature=shared" },
+                    { title: "THE REAL JACKPOT", url: "https://youtu.be/jKHjcy7niwo?feature=shared" },
+                ],
+                emotional: [
+                    { title: "MASS", url: "https://youtu.be/c6SJid71K20?feature=shared" },
+                    { title: "SHYAM SINGHA ROY", url: "https://youtu.be/0_d2SwiAyC0?feature=shared" },
+                ]
+            };
+
+            const recommendationList = document.getElementById('recommendation-list');
+            recommendationList.innerHTML = ''; // Clear previous recommendations
+
+            recommendations[genre].forEach(movie => {
+                const listItem = document.createElement('li');
+                const link = document.createElement('a');
+                link.href = movie.url;
+                link.textContent = movie.title;
+                link.target = "_blank"; // Open the link in a new tab
+                listItem.appendChild(link);
+                recommendationList.appendChild(listItem);
+            });
+
+            document.getElementById('recommendations').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
+
